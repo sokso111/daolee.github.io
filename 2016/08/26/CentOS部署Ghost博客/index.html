@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        CentOS 7部署Ghost博客.md | daolee
+        CentOS 7部署Ghost博客 | daolee
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://daolee.xyz">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CentOS 7部署Ghost博客.md | daolee">
+    <meta property="og:title" content="CentOS 7部署Ghost博客 | daolee">
     <meta property="og:description" content="Get busy living, or get busy dying.">
     
      <!--[if lte IE 9]>
@@ -339,24 +339,13 @@
 	
 		<div class="post-content_wrapper">
 			<p class="post-title">
-				CentOS 7部署Ghost博客.md
+				CentOS 7部署Ghost博客
 			</p>
 			<p>本文主要记录自己部署本博客的过程，环境为阿里云ECS香港主机，操作系统为CentOS 7。</p>
-<h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><p>Ghost要运行在Node.js环境下，如果尚未安装Node.js，Ghost官方建议安装最新版Node.js。<br>CentOS 7下安装好epel，然后安装Node.js</p>
-<pre><code># 先安装epel
-sudo yum install epel-release
-# 然后安装Node.js
-sudo yum install nodejs
-</code></pre><h4 id="安装Ghost"><a href="#安装Ghost" class="headerlink" title="安装Ghost"></a>安装Ghost</h4><p>我选择的是从官网安装最新版本的Ghost，喜欢中文的可去<a href="http://www.ghostchina.com" target="_blank" rel="external">Ghost中文网</a>下载中文版。</p>
-<pre><code># 下载最新版Ghost
-wget https://ghost.org/zip/ghost-latest.zip
-# 解压Ghost
-uzip ghost-latest.zip
-</code></pre><h4 id="配置Ghost"><a href="#配置Ghost" class="headerlink" title="配置Ghost"></a>配置Ghost</h4><pre><code># 复制config.example.js到config.js
-cp config.exaple.js config.js
-# 打开config.js
-vim config.js
-</code></pre><p>最终的配置文件基本如下，Ghost默认使用SQLite，此处我使用MySQL。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">production: &#123;  </div><div class="line">    url: &apos;http://undefinedblog.com&apos;, //替换为你自己的域名。</div><div class="line">    mail: &#123;&#125;,</div><div class="line">    database: &#123;</div><div class="line">        client: &apos;mysql&apos;,</div><div class="line">        connection: &#123;</div><div class="line">            host     : &apos;localhost&apos;, //mysql主机名</div><div class="line">            user     : &apos;user&apos;, //mysql用户名</div><div class="line">            password : &apos;ghost对应的密码&apos;, //mysql密码</div><div class="line">            database : &apos;ghost&apos;, //为ghost创建的数据表</div><div class="line">            charset  : &apos;utf8&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    server: &#123;</div><div class="line">        host: &apos;127.0.0.1&apos;, //有些时候可能需要改为0.0.0.0</div><div class="line">        port: &apos;2368&apos;//与后面Nginx配置保持一致</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line">..</div></pre></td></tr></table></figure></p>
+<h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><p>Ghost要运行在Node.js环境下，如果尚未安装Node.js，Ghost官方建议安装最新版Node.js。<br>CentOS 7下安装好epel，然后安装Node.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 先安装epel</div><div class="line">sudo yum install epel-release</div><div class="line"># 然后安装Node.js</div><div class="line">sudo yum install nodejs</div></pre></td></tr></table></figure></p>
+<h4 id="安装Ghost"><a href="#安装Ghost" class="headerlink" title="安装Ghost"></a>安装Ghost</h4><p>我选择的是从官网安装最新版本的Ghost，喜欢中文的可去<a href="http://www.ghostchina.com" target="_blank" rel="external">Ghost中文网</a>下载中文版。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 下载最新版Ghost</div><div class="line">wget https://ghost.org/zip/ghost-latest.zip</div><div class="line"># 解压Ghost</div><div class="line">uzip ghost-latest.zip</div></pre></td></tr></table></figure></p>
+<h4 id="配置Ghost"><a href="#配置Ghost" class="headerlink" title="配置Ghost"></a>配置Ghost</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 复制config.example.js到config.js</div><div class="line">cp config.exaple.js config.js</div><div class="line"># 打开config.js</div><div class="line">vim config.js</div></pre></td></tr></table></figure>
+<p>最终的配置文件基本如下，Ghost默认使用SQLite，此处我使用MySQL。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">production: &#123;  </div><div class="line">    url: &apos;http://undefinedblog.com&apos;, //替换为你自己的域名。</div><div class="line">    mail: &#123;&#125;,</div><div class="line">    database: &#123;</div><div class="line">        client: &apos;mysql&apos;,</div><div class="line">        connection: &#123;</div><div class="line">            host     : &apos;localhost&apos;, //mysql主机名</div><div class="line">            user     : &apos;user&apos;, //mysql用户名</div><div class="line">            password : &apos;ghost对应的密码&apos;, //mysql密码</div><div class="line">            database : &apos;ghost&apos;, //为ghost创建的数据表</div><div class="line">            charset  : &apos;utf8&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    server: &#123;</div><div class="line">        host: &apos;127.0.0.1&apos;, //有些时候可能需要改为0.0.0.0</div><div class="line">        port: &apos;2368&apos;//与后面Nginx配置保持一致</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line">...</div></pre></td></tr></table></figure></p>
 <p>配置好后安装依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --production</div></pre></td></tr></table></figure></p>
 <h4 id="永久运行Ghost"><a href="#永久运行Ghost" class="headerlink" title="永久运行Ghost"></a>永久运行Ghost</h4><p>现在运行<code>node index.js</code>,访问<a href="">http://yourip:2368</a>就可以访问你的Ghost博客了。要想让Ghost保持永久运行，可借助<code>forever</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 安装forever</div><div class="line">npm install forever -g</div><div class="line"># forever启动ghost</div><div class="line">NODE_ENV=production forever start index.js</div><div class="line"># forever其他常用命令</div><div class="line">forever stop index.js //停止Ghost</div><div class="line">forever restart index.js //重启Ghost</div></pre></td></tr></table></figure></p>
 <h4 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h4><p>如果未安装Nginx，按照Nginx文档的说明安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># 创建nginx.repo文件</div><div class="line">vim /etc/yum.repos.d/nginx.repo</div><div class="line"># 在nginx.repo写入如下内容</div><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/centos/7/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line"># 然后就可以通过`yum install nginx`来安装nginx了。</div></pre></td></tr></table></figure></p>
@@ -395,7 +384,7 @@ vim config.js
         <div class="ds-thread" 
             data-thread-key="2016/08/26/CentOS部署Ghost博客/" 
             data-url="http://daolee.xyz/2016/08/26/CentOS部署Ghost博客/"
-            data-title="CentOS 7部署Ghost博客.md"></div>
+            data-title="CentOS 7部署Ghost博客"></div>
     <!-- 多说评论框 end -->
 </div>
 
