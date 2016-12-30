@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        Let&#39;s Encrypt 让Ghost博客实现全站HTTPS | daolee
+        Category: Reading | daolee
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://daolee.xyz">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Let&#39;s Encrypt 让Ghost博客实现全站HTTPS | daolee">
+    <meta property="og:title" content="Category: Reading | daolee">
     <meta property="og:description" content="Get busy living, or get busy dying.">
     
      <!--[if lte IE 9]>
@@ -194,229 +194,100 @@
                 </button>
 				
 				
-                <!-- Post TOC -->
+                <!-- Index Module -->
 
+<div class="material-index mdl-grid">
+	
+    <div class="locate-thumbnail-symbol"></div>
     
-	<!-- Back Button -->
-<!--
-	<div class="material-back" id="backhome-div" tabindex="0">
-		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
-			<i class="material-icons" role="presentation">arrow_back</i>
-			<span class="mdl-button__ripple-container">
-				<span class="mdl-ripple"></span>
-			</span>
-		</a>
-	</div>			
--->
-	<!-- Left aligned menu below button -->
-	<button id="post-toc-trigger-btn"
-			class="mdl-button mdl-js-button mdl-button--icon">
-	  <i class="material-icons">format_list_numbered</i>
-	</button>
-
-	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-		for="post-toc-trigger-btn">
-			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装官方客户端"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装官方客户端</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取证书"><span class="post-toc-number">2.</span> <span class="post-toc-text">获取证书</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#证书自动续期"><span class="post-toc-number">3.</span> <span class="post-toc-text">证书自动续期</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置Nginx"><span class="post-toc-number">4.</span> <span class="post-toc-text">配置Nginx</span></a></li></ol>
+    
 		
-<!--			<li class="mdl-menu__item">Some Action</li>-->
-	</ul>
-
-
-
-<!-- Layouts -->
-
-    <!-- Post Module -->
-    <div class="material-post_container">
-		
-        <div class="material-post mdl-grid">
-            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-
-                <!-- Post Header(Thumbnail & Title) -->
-                
-	<!-- Paradox Post Header -->
+			<!-- Paradox Thumbnail -->
+        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    
+    <!-- Post Thumbnail -->
 	
 		
 			<!-- Random Thumbnail -->
 			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-				<script>
+		
+	
+				
+		<!-- Post Title -->
+		<p class="article-headline-p"><a href="/CentOS-7-部署-Ghost-博客/">CentOS 7部署Ghost博客</a></p>
+	</div>
+
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+本文主要记录自己部署Ghost博客的过程，环境为阿里云ECS香港主机，操作系统为CentOS 7。
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/CentOS-7-部署-Ghost-博客/" target="_self">Continue Reading</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="daolee's avatar">
+            </div>
+            <div>
+                <strong>daolee</strong>
+                <span>Apr 26, 2016</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/hacking/">Hacking</a>, <a class="post_category-link" href="/categories/hacking/reading/">Reading</a>, <a class="post_category-link" href="/categories/hacking/reading/thinking/">Thinking</a>
+            </span>
+            
+            
+                <!-- Comment Number -->
+                &nbsp;|&nbsp;
+                <span class="post_entry-comment" >
+                        <span class="ds-thread-count" data-thread-key="CentOS-7-部署-Ghost-博客/" data-count-type="comments"></span>
+                </span>
+            
+            
+            <!-- Post Views -->
+            <span class="post_entry-views">
+                
+            </span>
+        </div>
+    </div>
+            
+</div>
+
+		
+		
+    
+    
+	
+		<script>
     
     var randomNum;
-    randomNum = Math.floor(Math.random() * 5 + 1);
     
-    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    var locatePost = $(".locate-thumbnail-symbol").next();
+    for(var i=0; i < 10; i++){
+        
+        randomNum = Math.floor(Math.random() * 5 + 1);
+        
+        locatePost.children(".post_thumbnail-random").attr('id', 'random_thumbnail-'+randomNum);
+        locatePost.children(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')')
+        
+        locatePost = locatePost.next();
+    }
     
 </script>
 
-		
-	
-        <p class="article-headline-p">
-            Let's Encrypt 让Ghost博客实现全站HTTPS
-        </p>
-    </div>
-
 	
 
-				
-				
-					<!-- Paradox Post Info -->
-					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-    
-    <!-- Author Avatar -->
-    <div id="author-avatar">
-        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
-    </div>
-    <!-- Author Name & Date -->
-    <div>
-        <strong>daolee</strong>
-        <span>May 28, 2016</span>
-    </div>
-    
-    <div class="section-spacer"></div>
-	
-    <!-- Favorite -->
-<!--
-    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
-        <i class="material-icons" role="presentation">favorite</i>
-        <span class="visuallyhidden">favorites</span>
-    </button>
--->
-    
-    <!-- Tags (bookmark) -->
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/HTTPS/">HTTPS</a>
-    </ul>
-    
-    <!-- Share -->
-    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">share</i>
-    <span class="visuallyhidden">share</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
-    
-    
-    
-    
-    <!-- Busuanzi Views -->
-    <a class="post_share-link" href="#">
-        <li class="mdl-menu__item">
-            <span id="busuanzi_container_page_pv">
-                <span id="busuanzi_value_page_pv"></span>&nbsp;Views
-            </span>
-        </li>
-    </a>
-    
-    
-    <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Let&#39;s Encrypt 让Ghost博客实现全站HTTPS&url=http://daolee.xyz//Let-s-Encrypt-让Ghost博客实现全站HTTPS/index.html&via=daolee" target="_blank">
-        <li class="mdl-menu__item">
-            Share to Twitter
-        </li>
-    </a>
-    
-    <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=http://daolee.xyz//Let-s-Encrypt-让Ghost博客实现全站HTTPS/index.html" target="_blank">
-        <li class="mdl-menu__item">
-            Share to Google+
-        </li>
-    </a>
-    
-    <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Let&#39;s Encrypt 让Ghost博客实现全站HTTPS&url=http://daolee.xyz//Let-s-Encrypt-让Ghost博客实现全站HTTPS/index.html&pic=&searchPic=false&style=simple" target="_blank">
-        <li class="mdl-menu__item">
-            Share to Weibo
-        </li>
-    </a>
-</ul>
 </div>
-				
-
-                <!-- Post Content -->
-                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-	
-		<p>这篇文章将介绍为Ghost博客配置HTTPS。</p>
-<p>Let’s Encrypt 是一个于2015年三季度推出的数字证书认证机构，将通过旨在消除当前手动创建和安装证书的复杂过程的自动化流程，为安全网站提供免费的SSL/TLS证书。</p>
-<p>Talk is cheap, Let’s start.</p>
-<h4 id="安装官方客户端"><a href="#安装官方客户端" class="headerlink" title="安装官方客户端"></a>安装官方客户端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 需要使用git &amp; python</div><div class="line">yum install git python</div><div class="line"># 下载客户端</div><div class="line">git clone https://github.com/letsencrypt/letsencrypt</div><div class="line"></div><div class="line"># 运行一次客户端</div><div class="line">cd letsencrypt</div><div class="line">./letsencrypt-auto --help</div></pre></td></tr></table></figure>
-<h4 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#停止nginx</div><div class="line">systemctl stop nginx</div><div class="line"></div><div class="line">#获取证书, --standalone 参数:使用内置web server. --email 参数:管理员邮箱,证书到期前会发邮件到此邮箱提醒. -d 参数:要绑定的域名,同一域的不同子域都要输入.</div><div class="line">./letsencrypt-auto certonly --standalone --email 你的邮箱 -d 你的域名</div><div class="line"></div><div class="line">#启动nginx</div><div class="line">systemctl start nginx</div></pre></td></tr></table></figure>
-<h4 id="证书自动续期"><a href="#证书自动续期" class="headerlink" title="证书自动续期"></a>证书自动续期</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./letsencrypt-auto renew</div></pre></td></tr></table></figure>
-<h4 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h4><p>编辑 <code>/etc/nginx/conf.d/ghost.conf</code></p>
-<p>最终配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    #启用 https, 使用 http/2 协议</div><div class="line">    listen 443 ssl http2;</div><div class="line">    server_name 你的域名;</div><div class="line">    #告诉浏览器当前页面禁止被frame</div><div class="line">    add_header X-Frame-Options DENY;</div><div class="line">    #告诉浏览器不要猜测mime类型</div><div class="line">    add_header X-Content-Type-Options nosniff;</div><div class="line">    root /usr/share/nginx/html/wordpress;</div><div class="line"></div><div class="line">    #证书路径</div><div class="line">    ssl_certificate /etc/letsencrypt/live/你的域名/fullchain.pem;</div><div class="line">    #私钥路径</div><div class="line">    ssl_certificate_key /etc/letsencrypt/live/你的域名/privkey.pem;</div><div class="line">    #安全链接可选的加密协议</div><div class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">    #可选的加密算法,顺序很重要,越靠前的优先级越高.</div><div class="line">    ssl_ciphers ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-RC4-SHA:!ECDHE-RSA-RC4-SHA:ECDH-ECDSA-RC4-SHA:ECDH-RSA-RC4-SHA:ECDHE-RSA-AES256-SHA:HIGH:!RC4-SHA:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!CBC:!EDH:!kEDH:!PSK:!SRP:!kECDH;</div><div class="line">    #在 SSLv3 或 TLSv1 握手过程一般使用客户端的首选算法,如果启用下面的配置,则会使用服务器端的首选算法.</div><div class="line">    ssl_prefer_server_ciphers on;</div><div class="line">    #储存SSL会话的缓存类型和大小</div><div class="line">    ssl_session_cache shared:SSL:10m;</div><div class="line">    #缓存有效期</div><div class="line">    ssl_session_timeout 60m;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        proxy_set_header        X-Real-IP $remote_addr;</div><div class="line">        proxy_set_header        Host      $http_host;</div><div class="line">        proxy_pass              http://127.0.0.1:2368;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">server&#123;</div><div class="line">    listen 80;</div><div class="line">    server_name 你的域名;</div><div class="line">    #告诉浏览器有效期内只准用 https 访问</div><div class="line">    add_header Strict-Transport-Security max-age=15768000;</div><div class="line">    #永久重定向到 https 站点</div><div class="line">    return 301 https://$server_name$request_uri;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        proxy_set_header        X-Real-IP $remote_addr;</div><div class="line">        proxy_set_header        Host      $http_host;</div><div class="line">        proxy_pass              http://127.0.0.1:2368;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>重启nginx<code>systemctl restart nginx</code>后，再次访问你的域名就可以看见那好看的绿色小锁了（可以愉快的装X了）。</p>
-
-	
-	
-	
-	
-</div>
-				
-				
-
-                <!-- Post Comments -->
-                
-                    
-    <!-- 使用多说评论 -->
-    <link rel="stylesheet" href="/css/duoshuo.min.css">
-<style>
-    #ds-thread #ds-reset .ds-post-button{
-        background-color: #0097A7 !important;
-    }
-    #ds-wrapper #ds-reset .ds-icons-32{
-        background-color: #0097A7 !important;
-    }
-    #ds-reset .ds-highlight {
-        color: #0097A7 !important;
-    }
-</style>
-<div id="comments">
-    <!-- 多说评论框 start -->
-        <div class="ds-thread" 
-            data-thread-key="Let-s-Encrypt-让Ghost博客实现全站HTTPS/" 
-            data-url="http://daolee.xyz/Let-s-Encrypt-让Ghost博客实现全站HTTPS/"
-            data-title="Let&#39;s Encrypt 让Ghost博客实现全站HTTPS"></div>
-    <!-- 多说评论框 end -->
-</div>
-
-
-
-                
-            </div>
-
-            <!-- Post Prev & Next Nav -->
-            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    
-    <!-- Prev Nav -->
-    
-        <a href="/CentOS-7-配置-Python-3-环境/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Newer
-        </a>
-    
-
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
-
-    <!-- Next Nav -->
-    
-        <a href="/CentOS-7-部署-Ghost-博客/" id="post_nav-older" class="next-content">
-            Older
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
-    
-</nav>
-        </div>
-    </div>
 
 				
 				
