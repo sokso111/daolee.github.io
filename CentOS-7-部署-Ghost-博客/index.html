@@ -357,7 +357,8 @@
 				CentOS 7部署Ghost博客
 			</p>
 			<p><img src="http://o83lnu6gp.bkt.clouddn.com/ghost.png" alt="Ghost"></p>
-<p>本文主要记录自己部署<a href="https://ghost.org" target="_blank" rel="external">Ghost</a>博客的过程，环境为阿里云ECS香港主机，操作系统为CentOS 7。<a id="more"></a></p>
+<p>本文主要记录自己部署<a href="https://ghost.org" target="_blank" rel="external">Ghost</a>博客的过程，环境为阿里云ECS香港主机，操作系统为CentOS 7。</p>
+<a id="more"></a>
 <h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><p>Ghost要运行在Node.js环境下，如果尚未安装Node.js，Ghost官方建议安装最新版Node.js。<br>CentOS 7下安装好epel，然后安装Node.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo yum install epel-release <span class="comment"># 先安装epel</span></div><div class="line">sudo yum install nodejs <span class="comment"># 然后安装nodejs</span></div></pre></td></tr></table></figure></p>
 <h4 id="安装Ghost"><a href="#安装Ghost" class="headerlink" title="安装Ghost"></a>安装Ghost</h4><p>我选择的是从官网安装最新版本的Ghost，喜欢中文的可去<a href="http://www.ghostchina.com" target="_blank" rel="external">Ghost中文网</a>下载中文版。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://ghost.org/zip/ghost-latest.zip &amp;&amp; unzip ghost-latest.zip <span class="comment"># 下载最新版Ghost并解压</span></div></pre></td></tr></table></figure></p>
 <h4 id="配置Ghost"><a href="#配置Ghost" class="headerlink" title="配置Ghost"></a>配置Ghost</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config.exaple.js config.js <span class="comment"># 复制config.example.js到config.js</span></div><div class="line">vim config.js <span class="comment"># 打开config.js</span></div></pre></td></tr></table></figure>
