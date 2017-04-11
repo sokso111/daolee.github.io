@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        CentOS 7部署Ghost博客 | daolee
+        CentOS 7安装MaridDB | daolee
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://daolee.xyz">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CentOS 7部署Ghost博客 | daolee">
+    <meta property="og:title" content="CentOS 7安装MaridDB | daolee">
     <meta property="og:description" content="Get busy living, or get busy dying.">
     
      <!--[if lte IE 9]>
@@ -348,23 +348,15 @@
 	
 		<div class="post-content_wrapper">
 			<p class="post-title">
-				CentOS 7部署Ghost博客
+				CentOS 7安装MaridDB
 			</p>
-			<p><img src="http://o83lnu6gp.bkt.clouddn.com/ghost.png" alt="Ghost"></p>
-<p>本文主要记录自己部署<a href="https://ghost.org" target="_blank" rel="external">Ghost</a>博客的过程，环境为阿里云ECS香港主机，操作系统为CentOS 7。</p>
-<a id="more"></a>
-<h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><p>Ghost要运行在Node.js环境下，如果尚未安装Node.js，Ghost官方建议安装最新版Node.js。<br>CentOS 7下安装好epel，然后安装Node.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo yum install epel-release <span class="comment"># 先安装epel</span></div><div class="line">sudo yum install nodejs <span class="comment"># 然后安装nodejs</span></div></pre></td></tr></table></figure></p>
-<h4 id="安装Ghost"><a href="#安装Ghost" class="headerlink" title="安装Ghost"></a>安装Ghost</h4><p>我选择的是从官网安装最新版本的Ghost，喜欢中文的可去<a href="http://www.ghostchina.com" target="_blank" rel="external">Ghost中文网</a>下载中文版。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://ghost.org/zip/ghost-latest.zip &amp;&amp; unzip ghost-latest.zip <span class="comment"># 下载最新版Ghost并解压</span></div></pre></td></tr></table></figure></p>
-<h4 id="配置Ghost"><a href="#配置Ghost" class="headerlink" title="配置Ghost"></a>配置Ghost</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config.exaple.js config.js <span class="comment"># 复制config.example.js到config.js</span></div><div class="line">vim config.js <span class="comment"># 打开config.js</span></div></pre></td></tr></table></figure>
-<p>最终的配置文件基本如下，Ghost默认使用SQLite，此处我使用MySQL。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">production: &#123;  </div><div class="line">    url: 'http://undefinedblog.com', //替换为你自己的域名。</div><div class="line">    mail: &#123;&#125;,</div><div class="line">    database: &#123;</div><div class="line">        client: 'mysql',</div><div class="line">        connection: &#123;</div><div class="line">            host     : 'localhost', //mysql主机名</div><div class="line">            user     : 'user', //mysql用户名</div><div class="line">            password : 'ghost对应的密码', //mysql密码</div><div class="line">            database : 'ghost', //为ghost创建的数据表</div><div class="line">            charset  : 'utf8'</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    server: &#123;</div><div class="line">        host: '127.0.0.1', //有些时候可能需要改为0.0.0.0</div><div class="line">        port: '2368' //与后面Nginx配置保持一致</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>配置好后安装依赖<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --production</div></pre></td></tr></table></figure></p>
-<h4 id="永久运行Ghost"><a href="#永久运行Ghost" class="headerlink" title="永久运行Ghost"></a>永久运行Ghost</h4><p>现在运行<code>node index.js</code>,访问<a href="">http://yourip:2368</a>就可以访问你的Ghost博客了。要想让Ghost保持永久运行，可借助<code>forever</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install forever -g # 安装forever</div><div class="line">NODE_ENV=production forever start index.js # forever启动ghost</div><div class="line"># forever其他常用命令</div><div class="line">forever stop index.js #停止Ghost</div><div class="line">forever restart index.js #重启Ghost</div></pre></td></tr></table></figure></p>
-<h4 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h4><p>如果未安装Nginx，按照Nginx文档的说明安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/yum.repos.d/nginx.repo <span class="comment"># 创建nginx.repo文件</span></div></pre></td></tr></table></figure></p>
-<p>在nginx.repo写入如下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/centos/7/<span class="variable">$basearch</span>/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure></p>
-<p>然后就可以通过<code>yum install nginx</code>来安装nginx了。</p>
-<p>安装好nginx后，添加文件<code>/etc/nginx/conf.d/ghost.conf</code>，添加内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">server &#123;  </div><div class="line">    listen       80;</div><div class="line">    server_name  你的域名;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        proxy_set_header        X-Real-IP $remote_addr;</div><div class="line">        proxy_set_header        Host      $http_host;</div><div class="line">        proxy_pass              http://127.0.0.1:2368;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>重启nginx<code>systemctl restart nginx</code>后，就可以通过域名正常访问Ghost博客了。</p>
+			<p>本文记录一下在CentOS 7 中安装MariaDB的过程。<br><a id="more"></a></p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>安装之前最好先将系统更新到最新稳定状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum update</div></pre></td></tr></table></figure></p>
+<h4 id="安装并启动MariaDB"><a href="#安装并启动MariaDB" class="headerlink" title="安装并启动MariaDB"></a>安装并启动MariaDB</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install mariadb-server</div></pre></td></tr></table></figure>
+<p>设置MariaDB开机启动并开启MariaDB<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo systemctl <span class="built_in">enable</span> mariadb</div><div class="line">sudo systemctl start mariadb</div></pre></td></tr></table></figure></p>
+<h4 id="安全设置"><a href="#安全设置" class="headerlink" title="安全设置"></a>安全设置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mysql_secure_installation</div></pre></td></tr></table></figure>
+<p>这一命令会启用包括设置MaridDB的root密码等步骤。</p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>现在就可以在CentOS 7中使用MariaDB。</p>
 
 		</div>
 	
@@ -389,7 +381,7 @@
     
     <!-- Prev Nav -->
     
-        <a href="/Let-s-Encrypt-让Ghost博客实现全站HTTPS/" id="post_nav-newer" class="prev-content">
+        <a href="/CentOS-7-部署-Ghost-博客/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -403,7 +395,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/CentOS-7-安装-MaridDB/" id="post_nav-older" class="next-content">
+        <a href="/The-Crowd/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
