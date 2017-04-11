@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        Learning English | daolee
+        我的vim常用基本配置 | daolee
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://daolee.xyz">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Learning English | daolee">
+    <meta property="og:title" content="我的vim常用基本配置 | daolee">
     <meta property="og:description" content="Get busy living, or get busy dying.">
     
      <!--[if lte IE 9]>
@@ -348,19 +348,16 @@
 	
 		<div class="post-content_wrapper">
 			<p class="post-title">
-				Learning English
+				我的vim常用基本配置
 			</p>
-			<p><img src="http://o83lnu6gp.bkt.clouddn.com/English.gif" alt="English"></p>
-<p>英语作为世界上最通用的语言，其重要性不言而喻。尤其是在今天这个互联网以及全球化时代，英语的作用更加不可替代。<a id="more"></a>不管从事什么职业，熟练掌握英语都会对自己的工作有很大的帮助。本文我主要想写自己的英语学习经验。</p>
-<p><em>环境</em></p>
-<p>我始终认为一个人所处的环境对其的影响是极其重要的，学习一门语言也不例外。如果你的周围没有讲英语的氛围，那就自己营造。以我自己为例，我的电脑、手机等设备设置的系统语言都是英文，这样自己就好像处在纯英文环境里，虽然可能刚开始不习惯，但我强迫自己熟悉这种环境，遇到不熟悉的东西，随时用翻译软件查询解决。</p>
-<p><em>坚持</em></p>
-<p>使用类似Duolingo之类的语言学习类应用时，都会建议每天坚持学习，不断巩固学过的东西。可能每天只有零碎的10分钟时间来学习，但是只要持续投入，学习的效果还是很明显的。</p>
-<p><em>工具</em></p>
-<p>每天不管是碎片化地阅读，还是用Kindle看书，都会遇到比较陌生的词汇。这个时候，Kindke自带的复制翻译或者手机上有类似功能的软件，会带来极高的效率。</p>
-<p><em>交流</em></p>
-<p>互联网让世界已经没有了国界，各种社交软件都可以让每个人方便地同地球另一端的陌生人交流。如果你想向一个其他国家的人打招呼，第一句话我想肯定是用英语讲的。幸运地话，你恰好遇到了一个英语国家的人想学习你擅长的语言，那么你们就可以作为长期的笔友，互相教对方自己熟悉的语言。岂不妙哉？</p>
-<p>最后，借用一句老话，学好English，走遍天下都不怕。</p>
+			<p>vim 是我最喜欢的编辑器，虽然有人把它打造成自己的IDE，但是我喜欢只使用她的一些基本配置。</p>
+<p>.vimrc 是控制 vim 行为的配置文件，位于~/.vimrc。我的~/.vimrc已经放在我的<a href="https://github.com/daolee/myVimrc" target="_blank" rel="external">GitHub</a>上，需要的可以下载。</p>
+<h3 id="辅助信息"><a href="#辅助信息" class="headerlink" title="辅助信息"></a>辅助信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">set laststatus=2            &quot; 总是显示状态栏</div><div class="line">set ruler                   &quot; 显示光标当前位置</div><div class="line">set number                  &quot; 开启行号显示    </div><div class="line">&quot; 高亮显示当前行/列</div><div class="line">set cursorline</div><div class="line">set cursorcolumn</div><div class="line"></div><div class="line">set hlsearch                &quot; 高亮显示搜索结果</div></pre></td></tr></table></figure>
+<h3 id="代码相关"><a href="#代码相关" class="headerlink" title="代码相关"></a>代码相关</h3><h4 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot; 开启语法高亮功能</div><div class="line">syntax enable               &quot; 开启语法高亮功能</div><div class="line">syntax on                   &quot; 允许用指定语法高亮配色方案替换默认方案</div></pre></td></tr></table></figure>
+<h4 id="代码缩进"><a href="#代码缩进" class="headerlink" title="代码缩进"></a>代码缩进</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">filetype indent on          &quot; 自适应不同语言的智能缩进</div><div class="line">set expandtab               &quot; 将制表符扩展为空格</div><div class="line">set tabstop=4               &quot; 设置编辑时制表符占用空格数</div><div class="line">set shiftwidth=4            &quot; 设置格式化时制表符占用空格数</div><div class="line">set softtabstop=4           &quot; 让 vim 把连续数量的空格视为一个制表符</div></pre></td></tr></table></figure>
+<h4 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&quot; 基于缩进或语法进行代码折叠</div><div class="line">&quot;set foldmethod=indent</div><div class="line">set foldmethod=syntax</div><div class="line"></div><div class="line">set nofoldenable            &quot; 启动 vim 时关闭折叠代码</div></pre></td></tr></table></figure>
+<p>操作：za，打开/关闭当前折叠; zM，关闭所有折叠; zR, 打开所有折叠。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">set incsearch              &quot; 开启实时搜索功能</div><div class="line">set ignorecase             &quot; 搜索时大小写不敏感</div><div class="line">set wildmenu               &quot; vim 自身命令行模式智能补全</div><div class="line">set nowrap                 &quot; 禁止折行</div></pre></td></tr></table></figure>
 
 		</div>
 	
@@ -385,21 +382,13 @@
     
     <!-- Prev Nav -->
     
-        <a href="/我的vim常用基本配置/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Newer
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2016-2017/" id="post_nav-older" class="next-content">
+        <a href="/Learning-English/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
