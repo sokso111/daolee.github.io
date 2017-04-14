@@ -4,7 +4,7 @@
     <!-- Title -->
     
     <title>
-        tags | daolee
+        pip 安装软件时error:command &#39;gcc&#39; faild with exit status 1 的解决办法 | daolee
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://daolee.xyz">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="tags | daolee">
+    <meta property="og:title" content="pip 安装软件时error:command &#39;gcc&#39; faild with exit status 1 的解决办法 | daolee">
     <meta property="og:description" content="Get busy living, or get busy dying.">
     
      <!--[if lte IE 9]>
@@ -308,60 +308,94 @@
 				
                 <!-- Post TOC -->
 
+    
+
 
 <!-- Layouts -->
 
-    <!-- Tags Cloud -->
-	<style>
-	#bottom{
-		position: relative;
-	}
-	
-	@media screen and (max-width: 480px){
-		.material-tagscloud{
-			margin: 6em 2em 0;
-		}
-	}
-	
-	.material-tagscloud a{
-        text-decoration:none;
-        padding: 1px 9px;
-        margin: 9px 1px;
-        line-height: 40px;
-        white-space: nowrap;
-        transition: .6s;
-        opacity: .85;
-	}
-	.material-tagscloud a:hover{
-		transition: .6s;
-        opacity: 1;
-    	background: #FAFAFA;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-	}
-</style>
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-<div class=" material-tagscloud">
-	<div class="material-post mdl-grid">
-		<a href="/tags/CentOS-7/" style="font-size: 35px; color: #212121">CentOS 7</a> <a href="/tags/Debugging/" style="font-size: 16px; color: #757575">Debugging</a> <a href="/tags/English/" style="font-size: 16px; color: #757575">English</a> <a href="/tags/Ghost/" style="font-size: 16px; color: #757575">Ghost</a> <a href="/tags/HTTPS/" style="font-size: 16px; color: #757575">HTTPS</a> <a href="/tags/Learning/" style="font-size: 16px; color: #757575">Learning</a> <a href="/tags/MariaDB/" style="font-size: 16px; color: #757575">MariaDB</a> <a href="/tags/Python-3/" style="font-size: 16px; color: #757575">Python 3</a> <a href="/tags/The-Crowd/" style="font-size: 16px; color: #757575">The Crowd</a> <a href="/tags/Values/" style="font-size: 16px; color: #757575">Values</a> <a href="/tags/pip/" style="font-size: 16px; color: #757575">pip</a> <a href="/tags/vim/" style="font-size: 16px; color: #757575">vim</a>
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	
+
+	<!-- Isolation Post Header -->
+	<!-- Post thumbnail -->
+	
+		<!-- Post Header Info -->
+		<div class="post-header_info without-thumbnail">
+			<!-- Author Avatar & Name -->
+			<img src="/img/avatar.png" class="avatar-img" width="44px" height="44px" alt="daolee's avatar">
+			<span class="name-span">daolee</span>
+		</div>
+	
+		<!-- Null Thumbnail -->
+		<div class="post_thumbnail-null">
+	
 	</div>
-</div>
 
+				
+				
 
-<script>
-	var adjustFooter = function(){
-		if( ($("#bottom").offset().top + $("#bottom").outerHeight() ) < $(window).height() ){
-			var footerBottom = $(window).height() - $("#bottom").outerHeight() - $("#bottom").offset().top;
-//			console.log(footerBottom);
-			$("#bottom").css("bottom", "-" + footerBottom + "px");
-		}
-	};
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-	$(document).ready(function(){
-		adjustFooter();
-	});
-</script>
+	
+	
+		<div class="post-content_wrapper">
+			<p class="post-title">
+				pip 安装软件时error:command 'gcc' faild with exit status 1 的解决办法
+			</p>
+			<p>平日在使用pip安装一些软件时，有时候会遇到一个错误”error: command ‘gcc’ faild with exit status 1”。在本地的Ubuntu和服务器的CentOS上都出现过这个错误，遂将解决方案记录一下。<br><a id="more"></a></p>
+<p>CentOS上的解决方案是执行命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo yum -y install gcc gcc-c++ kernel-devel</div><div class="line">sudo yum -y install python-devel libxslt-devel libffi-devel openssl-devel</div></pre></td></tr></table></figure></p>
+<p>Ubuntu上则执行下面的命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install python-dev</div></pre></td></tr></table></figure></p>
+<p>对于python3:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install python3-dev</div></pre></td></tr></table></figure></p>
+<p>执行上面的命令以后，再次使用pip安装软件时应该就比较顺利了。</p>
+
+		</div>
+	
+	
+</div>
+				
+				
+					<!-- Paradox Post Info -->
+					
+				
+
+                <!-- Post Comments -->
+                
+                    
 
 
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/我的vim常用基本配置/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
 
 				
 				
